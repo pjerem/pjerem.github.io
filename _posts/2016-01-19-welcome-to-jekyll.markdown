@@ -1,24 +1,25 @@
 ---
 layout: post
-title:  "Welcome to Jekyll!"
+title:  "Null or empty value with ng-options"
 date:   2016-01-19 16:01:12
-categories: jekyll update
+categories: javascript angular
 ---
 
-You'll find this post in your `_posts` directory - edit this post and re-build (or run with the `-w` switch) to see your changes!
-To add new posts, simply add a file in the `_posts` directory that follows the convention: YYYY-MM-DD-name-of-post.ext.
-
-Jekyll also offers powerful support for code snippets:
-
-{% highlight ruby %}
-def print_hi(name)
-  puts "Hi, #{name}"
-end
-print_hi('Tom')
-#=> prints 'Hi, Tom' to STDOUT.
+{% highlight html %}
+<select ng-options="item as item.label for item in items" ng-model="selected"></select>
 {% endhighlight %}
 
-Check out the [Jekyll docs][jekyll] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll's GitHub repo][jekyll-gh].
+In this code, the $scope.selected variable will be affected with a reference to the item selected by the user.
+What if we want to allow the user to select none of the options ? Simple :
 
-[jekyll-gh]: https://github.com/jekyll/jekyll
-[jekyll]:    http://jekyllrb.com
+{% highlight html %}
+<select ng-options="item as item.label for item in items" ng-model="selected">
+  <option value="">No value</option>
+</select>
+{% endhighlight %}
+
+Adding an `<option>` tag with an empty `value` attribute will allow the user to select a null value.
+
+You can check that in the [ngOptions documentation][ngOptions].
+
+[ngOptions]: https://docs.angularjs.org/api/ng/directive/ngOptions
