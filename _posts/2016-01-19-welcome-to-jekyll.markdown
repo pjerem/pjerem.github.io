@@ -6,7 +6,8 @@ categories: javascript angular
 ---
 
 {% highlight html %}
-<select ng-options="item as item.label for item in items" ng-model="selected"></select>
+<select ng-options="item as item.label for item in items" ng-model="selected">
+</select>
 {% endhighlight %}
 
 In this code, the $scope.selected variable will be affected with a reference to the item selected by the user.
